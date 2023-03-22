@@ -23,19 +23,19 @@ const AddPuppy : React.FC = () => {
   };
   
   return (
-    <>
-      <h2>Add your pup</h2>
-      <form 
-        className='form'
+    <section className='flex justify-center space-x-6 p-6 bg-white w-max mx-auto content-center rounded-lg'>
+      <h2 className='text-2xl '>Add your pet:</h2>
+      <form   
+       className='content-center'    
         onSubmit={onSubmitForm}
       >
-          <div>
+          <div className='flex flex-row space-x-6 content-center'>
             <label htmlFor='name'>Name</label>
-            <input type='text' id='name' onChange={(event) => setName(event.target.value)} />
+            <input className='border rounded-lg' type='text' id='name' onChange={(event) => setName(event.target.value)} />
             <br></br>
             <label htmlFor='breed'>Breed: </label>
             <select id='breed' onChange={(event) => setBreed(event.target.value)}>
-              <option value='Dog'>--Select a pet--</option>
+              <option value='Dog'>--Select a type--</option>
               <option value='Dog'>Dog</option>
               <option value='Cat'>Cat</option>
               <option value='Hamster'>Hamster</option>
@@ -62,12 +62,12 @@ const AddPuppy : React.FC = () => {
               <option value='XL'>XL</option>
             </select>
             <br></br>
-            <label htmlFor='gge'>Age: </label>
-            <input type='text' id='age' onChange={(event) => setAge(event.target.value)} /> 
+            <label htmlFor='age'>Age: </label>
+            <input className='border rounded-lg' type='text' id='age' onChange={(event) => setAge(event.target.value)} /> 
+            <button className='bg-green-700 px-3 py-1 rounded-3xl' type='submit'><i className="fa-solid fa-plus text-white"></i></button>
           </div>
-        <button type='submit'>Add</button>
       </form>
-    </>
+    </section>
   )
 };
 

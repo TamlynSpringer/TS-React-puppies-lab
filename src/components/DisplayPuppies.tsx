@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { IPuppy } from '../types/types';
-import puppyImg from '../puppy.jpeg'
-
 
 const DisplayPuppies: React.FC = () => {
   const [puppies, setPuppies] = useState<Array<IPuppy>>([]);
@@ -67,45 +65,63 @@ const DisplayPuppies: React.FC = () => {
   //   })
   // }
 
-  // const img = 
+  const [flip, setFlip] = useState(false);
 
   return (
     <>
-      <section className="listContainer">
+      <main className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 my-10 max-w-7.5xl mx-auto p-5'>
         {puppies.map((puppy: IPuppy): JSX.Element => {
           return (
-            <div className='bg-white' key={puppy._id}>
-              <article className=''> 
-              <img className='mx-16 my-10' src={`../assets/${puppy.breed}.png`} alt='puppy-drawing' width='100' />              
-                <div className=''>
-                  <h3 className='mt-6 text-xl' >{puppy.name}</h3>
-                  <p>Type: {puppy.breed}</p>
-                  <p>Size: {puppy.size}</p>
-                  <p>Age: {puppy.age}</p>
+            <section onClick={() => setFlip(!flip)} className='cursor-pointer'  key={puppy._id}>
+              <article className={flip ? 'hidden' : ''}>
+                <div className='h-auto w-full object-cover rounded-lg shadow-md bg-white'>
+                  <img className='mx-10' src={`../assets/${puppy.breed}.png`} alt='pet-drawing' width='300' />
+                  <div className='flex flex-row'>
+                    <div className='mx-10 text-left flex-2'>
+                      <h3 className='mt-6 text-2xl p-3' >{puppy.name}</h3>
+                      <p className='text-lg p-3'>Type: {puppy.breed}</p>
+                      <p className='text-lg p-3'>Size: {puppy.size}</p>
+                      <p className='text-lg p-3'>Age: {puppy.age}</p>
+                    </div>
+                    <div className='mx-20 flex-1 flex flex-col justify-center space-y-6'>
+                      <button 
+                      
+                        // onClick={(event) => {
+                        //   event.stopPropagation();
+                        //   setUpdatePuppy({
+                        //     _id: puppy._id,
+                        //     name: puppy.name,
+                        //     breed: puppy.breed,
+                        //     size: puppy.size,
+                        //     age: puppy.age
+                        //   })
+                        // }}
+                        className='bg-green-700 px-3 py-1 rounded-3xl' type='submit'><i className="fa-solid fa-pen-to-square text-white"></i>
+                      </button>
+                      <button 
+                        onClick={(event) => {
+                        event.stopPropagation();
+                        removePuppy(puppy._id)
+                        }}
+                        className='bg-green-700 px-3 py-1 rounded-3xl' type='submit'><i className="fa-solid fa-delete-left text-white"></i></button>
+                    </div>
+                  </div>
                 </div>
-                {/* <button onClick={(event) => {
-                  event.stopPropagation();
-                  setUpdatePuppy({
-                    _id: puppy._id,
-                    name: puppy.name,
-                    breed: puppy.breed,
-                    size: puppy.size,
-                    age: puppy.age
-                  })
-                }}>Edit
-                </button> */}
-                <button onClick={(event) => {
-                  event.stopPropagation();
-                  removePuppy(puppy._id)
-                }}>
-                  Remove
-                </button>
               </article>
-            </div>
+              <div className={flip ? 'back h-72 w-full object-cover rounded-lg shadow-md p-10 bg-neutral-300' : 'hidden'} >
+                <h3 className='mt-6 text-xl' >{puppy.name}</h3>
+                <p>Type: {puppy.breed}</p>
+                <p>Size: {puppy.size}</p>
+                <p>Age: {puppy.age}</p>
+                <br />
+                
+              </div>
+                
+            </section>
           )
         
         })}
-      </section>
+      </main>
     </>
   )
 }
