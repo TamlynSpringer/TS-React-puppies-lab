@@ -34,15 +34,32 @@ const AddPuppy : React.FC = () => {
             <input type='text' id='name' onChange={(event) => setName(event.target.value)} />
             <br></br>
             <label htmlFor='breed'>Breed: </label>
-            <input type='text' id='breed' onChange={(event) => setBreed(event.target.value)} />
+            <select id='breed' onChange={(event) => setBreed(event.target.value)}>
+              <option value='Dog'>--Select a pet--</option>
+              <option value='Dog'>Dog</option>
+              <option value='Cat'>Cat</option>
+              <option value='Hamster'>Hamster</option>
+              <option value='Guinea pig'>Guinea pig</option>
+              <option value='Fish'>Fish</option>
+              <option value='Bird'>Bird</option>
+              <option value='Ferret'>Ferret</option>
+              <option value='Gecko'>Gecko</option>
+              <option value='Parrot'>Parrot</option>
+              <option value='Mouse'>Mouse</option>
+              <option value='Rabbit'>Rabbit</option>
+              <option value='Snake'>Snake</option>
+              <option value='Tortoise'>Tortoise</option>
+            </select>
             <br></br>
             <label htmlFor='size'>Size: </label>
             <select id='size' onChange={(event) => setSize(event.target.value)}>
-              <option value='xs'>XS</option>
-              <option value='s'>S</option>
-              <option value='m'>M</option>
-              <option value='l'>L</option>
-              <option value='xl'>XL</option>
+              <option value='S'>--Select a size--</option>
+              <option value='XXS'>XXS</option>
+              <option value='XS'>XS</option>
+              <option value='S'>S</option>
+              <option value='M'>M</option>
+              <option value='L'>L</option>
+              <option value='XL'>XL</option>
             </select>
             <br></br>
             <label htmlFor='gge'>Age: </label>
